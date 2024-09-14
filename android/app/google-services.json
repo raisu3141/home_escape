@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "271731699482",
+    "project_id": "homeescape-75db4",
+    "storage_bucket": "homeescape-75db4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:271731699482:android:b5c9e62c606efd9aefc6a3",
+        "android_client_info": {
+          "package_name": "com.example.home_escape"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlnk1cxZNDZ1XzzY4SdfcLePKvQcFVFfw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
