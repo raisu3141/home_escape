@@ -5,6 +5,4 @@ class Constant {
   static const int mainFontColor = 0xFF404040;
   static const int accentColor = 0xFF89C58B;
   static const int backGroundColor = 0xFFFFFAF2;
-  static double deviceHeight = 0;
-  static double deviceWidth = 0;
 }
