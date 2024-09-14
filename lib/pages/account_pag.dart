@@ -40,6 +40,8 @@ class _AccountPageState extends State<AccountPage> {
 
               SizedBox(height: Constant.deviceHeight * 0.1),
               showEmail(),
+              SizedBox(height: Constant.deviceHeight * 0.03),
+              showLocation(),
             ],
           ),
         ),
@@ -61,6 +63,35 @@ class _AccountPageState extends State<AccountPage> {
             ),
           ],
         ),
+        const SizedBox(height: 10),
+        const Text(
+          'motoki@gmail.com',
+          style: TextStyle(
+            fontSize: 20
+          ),
+        ),
+        const SizedBox(height: 10),
+        const Divider(
+          color: Color(0xFF040404),
+        ),
+      ],
+    );
+  }
+
+  Widget showLocation(){
+    return Column(
+      children: [
+        Row(
+          children: [
+            SizedBox(width: Constant.deviceWidth * 0.13),
+            const Text(
+              '所在地',
+              style: TextStyle(
+                fontSize: 20,
+              )
+            ),
+          ],
+        )
       ],
     );
   }
