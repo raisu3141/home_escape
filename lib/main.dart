@@ -61,9 +61,9 @@ class HomePage extends HookWidget {
     // 各タブに表示するページのリスト
     final List<Widget> _pages = <Widget>[
       // const AccountPage(), //ここに追加する
-      // const checkPage(),
-      const AccountPage(),
+      CheckPage(), // const付けないでくれぇ
       const EscapePage(),
+      const AccountPage(),
     ];
 
     // タブが選択された時にインデックスを更新するメソッド
@@ -105,7 +105,7 @@ class HomePage extends HookWidget {
           ],
           selectedItemColor: Colors.orange,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           elevation: 0,
           iconSize: 30,
         ),
