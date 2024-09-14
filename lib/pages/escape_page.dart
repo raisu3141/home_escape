@@ -1,22 +1,5 @@
 import 'package:flutter/material.dart';
 
-void main() {
-  runApp(MyApp());
-}
-
-class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      // title: '防災チェックリスト',
-      // theme: ThemeData(
-      //   primarySwatch: Colors.orange,
-      // ),
-      home: EscapePage(),
-    );
-  }
-}
-
 class EscapePage extends StatelessWidget {
   const EscapePage({super.key});
 
