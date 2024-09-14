@@ -4,13 +4,15 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_escape/constant/constant.dart';
 
 import 'package:home_escape/main.dart';
+import 'package:home_escape/pages/sign_in.dart';
 
 class StartPage extends ConsumerWidget {
   const StartPage({super.key});
 
   @override
-  Widget build(BuildContext context,WidgetRef ref) {
-    final double deviceHeight = MediaQuery.of(context).size.height; //端末の縦の大きさを取得
+  Widget build(BuildContext context, WidgetRef ref) {
+    final double deviceHeight =
+        MediaQuery.of(context).size.height; //端末の縦の大きさを取得
     final double deviceWidth = MediaQuery.of(context).size.width; //端末の横の大きさを取得
 
     return Scaffold(
@@ -21,25 +23,26 @@ class StartPage extends ConsumerWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
             // ロゴ画像
-            child:
-              Center(
-                child: Container(
-                  child: Image.asset('assets/images/icon.png'),
-                  width: deviceHeight * 0.4,
-                  ),
+            child: Center(
+              child: Container(
+                child: Image.asset('assets/images/icon.png'),
+                width: deviceHeight * 0.4,
               ),
+            ),
           ),
           SizedBox(height: deviceHeight * 0.1),
-          Padding( // ゲストスタートボタン
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-            child: 
-              Center(
+          Padding(
+              // ゲストスタートボタン
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+              child: Center(
                 child: ElevatedButton(
-                  onPressed: () async{
+                  onPressed: () async {
                     // ボタンを押すとホーム画面に遷移
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomePage(title: 'HomePage')),
+                      MaterialPageRoute(
+                          builder: (context) =>
+                              const HomePage(title: 'HomePage')),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -48,23 +51,21 @@ class StartPage extends ConsumerWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-
                   ),
                   child: Text('ゲストとしてはじめる'),
                 ),
-              )
-          ),
+              )),
           SizedBox(height: deviceHeight * 0.05),
-          Padding( // ログインスタートボタン
-            padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-            child: 
-              Center(
+          Padding(
+              // ログインスタートボタン
+              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
+              child: Center(
                 child: ElevatedButton(
                   onPressed: () {
                     // toDo: ボタンを押すとログインページに遷移
                     Navigator.pushReplacement(
                       context,
-                      MaterialPageRoute(builder: (context) => const HomePage(title: 'HomePage')),
+                      MaterialPageRoute(builder: (context) => const SignUp()),
                     );
                   },
                   style: ElevatedButton.styleFrom(
@@ -73,12 +74,10 @@ class StartPage extends ConsumerWidget {
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
-
                   ),
                   child: Text('ログインしてはじめる'),
                 ),
-              )
-          ),
+              )),
         ],
       ),
     );
