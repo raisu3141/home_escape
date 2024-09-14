@@ -185,6 +185,7 @@ class _SignUpState extends State<SignUp> {
                                   if (user != null)
                                     print(
                                         "ログインしました　${user.email} , ${user.uid}");
+                                        Constant.userid = user?.uid;
                                 } catch (e) {
                                   print("えらーだよ！");
                                   print(e);
