@@ -10,7 +10,7 @@ import 'pages/check_page.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+
   const app = MyApp();
   const scope = ProviderScope(child: app);
   runApp(scope);
@@ -34,7 +34,7 @@ class MyApp extends StatelessWidget {
         // フォントの設定
         fontFamily: 'dotGothic16',
       ),
-      home: const HomePage( title: 'HomeEscape'),
+      home: const HomePage(title: 'HomeEscape'),
     );
   }
 }
@@ -62,7 +62,7 @@ class HomePage extends HookWidget {
       // const AccountPage(), //ここに追加する
       // const checkPage(),
       const AccountPage(),
-      
+      const EscapePage(),
     ];
 
     // タブが選択された時にインデックスを更新するメソッド
@@ -81,7 +81,7 @@ class HomePage extends HookWidget {
           border: Border(
             top: BorderSide(
               color: Colors.grey, // 線の色
-              width: 1.0,        // 線の太さ
+              width: 1.0, // 線の太さ
             ),
           ),
         ),
@@ -109,6 +109,6 @@ class HomePage extends HookWidget {
           iconSize: 30,
         ),
       ),
-);
+    );
   }
 }
