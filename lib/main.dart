@@ -21,9 +21,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //デバイスの縦横取得してるよー
     Constant.deviceHeight = MediaQuery.of(context).size.height;
     Constant.deviceWidth = MediaQuery.of(context).size.width;
-    
+
     return MaterialApp(
       title: 'HomeEscape',
       theme: ThemeData(
