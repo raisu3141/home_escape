@@ -46,7 +46,7 @@ class _AccountPageState extends State<AccountPage> {
                 ),
               ),
 
-              SizedBox(height: Constant.deviceHeight * 0.1),
+              SizedBox(height: Constant.deviceHeight * 0.17),
               showEmail(),
               SizedBox(height: Constant.deviceHeight * 0.03),
               showLocation(),
@@ -100,21 +100,25 @@ class _AccountPageState extends State<AccountPage> {
             ),
           ],
         ),
+        const SizedBox(height: 10),
         pullDown(),
+        const SizedBox(height: 10),
+        const Divider(
+          color: Color(0xFF040404),
+        ),
       ],
     );
   }
 
   Widget pullDown(){
-    return IntrinsicWidth(
-      child: ConstrainedBox(
-        constraints: const BoxConstraints(
-          minWidth: 250,
-        ),
-        child: DropdownButtonFormField(
-          decoration: const InputDecoration(
-            border: OutlineInputBorder(),
-          ),
+    return Container(
+      decoration: BoxDecoration(
+        border: Border.all(color:const Color(0xFF040404)),
+        borderRadius: const BorderRadius.all(Radius.circular(10)),
+      ),
+      padding: const EdgeInsets.fromLTRB(100, 2, 100, 2),
+      child: DropdownButtonHideUnderline(
+        child: DropdownButton(
           items: choices.map<DropdownMenuItem<String>>((String value) {
             return DropdownMenuItem<String>(
               value: value,
