@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:home_escape/constant/constant.dart';
 
 class EscapePage extends StatelessWidget {
   const EscapePage({super.key});
@@ -50,28 +51,36 @@ class EscapePage extends StatelessWidget {
 
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '${index + 1}.',
-                      style: const TextStyle(
-                        fontSize: 30,
-                        color: Colors.orange,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        instruction, // リスト内の指示を表示
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  // margin: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    border: Border.all(color: Color(Constant.mainColor)),
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    // crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${index + 1}.',
                         style: const TextStyle(
-                          fontSize: 25,
+                          fontSize: 30,
+                          color: Colors.orange,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          instruction, // リスト内の指示を表示
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }),
