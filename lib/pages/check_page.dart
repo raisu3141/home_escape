@@ -28,6 +28,8 @@ class _ChecklistPageState extends State<CheckPage>
     with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
+  
+
   List<ChecklistItem> _lists = [
     ChecklistItem(name: "枕元にスリッパを置く", isChecked: false),
     ChecklistItem(name: "ガスの元栓確認", isChecked: false),

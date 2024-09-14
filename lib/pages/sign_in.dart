@@ -126,6 +126,8 @@ class _SignUpState extends State<SignUp> {
                             ),
                             const SizedBox(height: 5.0),
                             TextFormField(
+                              style:
+                                  TextStyle(color: Color(Constant.mainColor)),
                               decoration: const InputDecoration(
                                 labelText: 'password',
                                 labelStyle: TextStyle(
