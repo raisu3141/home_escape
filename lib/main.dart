@@ -2,15 +2,21 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:home_escape/constant/constant.dart';
-import 'package:home_escape/pages/check_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
+import 'firebase_options.dart';
+import 'package:home_escape/pages/check_page.dart';
 import 'pages/account_pag.dart';
 import 'pages/escape_page.dart';
 import 'pages/check_page.dart';
+import 'pages/start.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ); // Firebaseを初期化
+
   const app = MyApp();
   const scope = ProviderScope(child: app);
   runApp(scope);
@@ -34,7 +40,7 @@ class MyApp extends StatelessWidget {
         // フォントの設定
         fontFamily: 'dotGothic16',
       ),
-      home: const HomePage( title: 'HomeEscape'),
+      home: const StartPage(),
     );
   }
 }
@@ -60,9 +66,9 @@ class HomePage extends HookWidget {
     // 各タブに表示するページのリスト
     final List<Widget> _pages = <Widget>[
       // const AccountPage(), //ここに追加する
-      // const checkPage(),
+      CheckPage(), // const付けないでくれぇ
+      const EscapePage(),
       const AccountPage(),
-      
     ];
 
     // タブが選択された時にインデックスを更新するメソッド
@@ -81,7 +87,7 @@ class HomePage extends HookWidget {
           border: Border(
             top: BorderSide(
               color: Colors.grey, // 線の色
-              width: 1.0,        // 線の太さ
+              width: 1.0, // 線の太さ
             ),
           ),
         ),
@@ -104,11 +110,11 @@ class HomePage extends HookWidget {
           ],
           selectedItemColor: Colors.orange,
           type: BottomNavigationBarType.fixed,
-          backgroundColor: Colors.transparent,
+          backgroundColor: Colors.white,
           elevation: 0,
           iconSize: 30,
         ),
       ),
-);
+    );
   }
 }
