@@ -25,6 +25,7 @@ class EscapePage extends StatelessWidget {
     ];
 
     return Scaffold(
+      backgroundColor: Color(Constant.backGroundColor),
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
@@ -37,12 +38,36 @@ class EscapePage extends StatelessWidget {
         padding: EdgeInsets.symmetric(horizontal: horizontalPadding),
         child: ListView(
           children: [
-            const SizedBox(height: 30),
-            const Text(
-              '落ち着いて以下の行動をとってください',
-              style: TextStyle(fontSize: 17),
-            ),
             const SizedBox(height: 40),
+            // const Text(
+            //   '落ち着いて行動してください',
+            //   textAlign: TextAlign.center,
+            //   style: TextStyle(
+            //     fontSize: 22,
+            //     decoration: TextDecoration.underline,
+            //     decorationColor: Color(Constant.mainColor),
+            //     decorationThickness: 2,
+            //   ),
+            // ),
+            const Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Text(
+                  '落ち着いて',
+                  style: TextStyle(
+                    color: Color(Constant.mainColor),
+                    fontSize: 25,
+                  ),
+                ),
+                Text(
+                  '行動してください',
+                  style: TextStyle(
+                    fontSize: 20,
+                  ),
+                ),
+              ],
+            ),
+            const SizedBox(height: 30),
 
             // 指示を動的に表示
             ...firstInstruct.asMap().entries.map((entry) {
@@ -50,12 +75,16 @@ class EscapePage extends StatelessWidget {
               String instruction = entry.value;
 
               return Padding(
-                padding: const EdgeInsets.symmetric(vertical: 10),
+                padding: const EdgeInsets.symmetric(vertical: 5),
                 child: Container(
                   padding: EdgeInsets.all(10.0),
                   // margin: EdgeInsets.all(20),
                   decoration: BoxDecoration(
-                    border: Border.all(color: Color(Constant.mainColor)),
+                    color: Colors.white,
+                    border: Border.all(
+                      color: Color(Constant.mainColor),
+                      width: 3,
+                    ),
                     borderRadius: BorderRadius.circular(10),
                   ),
                   child: Row(
@@ -85,14 +114,16 @@ class EscapePage extends StatelessWidget {
               );
             }),
 
-            const SizedBox(height: 30),
+            const SizedBox(height: 50),
 
             // 地震が収まった場合の表示
             const Text(
               '地震が収まった場合',
-              style: TextStyle(fontSize: 20),
+              style: TextStyle(
+                fontSize: 20,
+              ),
             ),
-            const SizedBox(height: 40),
+            const SizedBox(height: 20),
 
             // 指示を動的に表示
             ...secondInstruct.asMap().entries.map((entry) {
@@ -101,28 +132,40 @@ class EscapePage extends StatelessWidget {
 
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 10),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      '${index + 1}.',
-                      style: const TextStyle(
-                        fontSize: 30,
-                        color: Colors.orange,
-                        fontWeight: FontWeight.bold,
-                      ),
+                child: Container(
+                  padding: EdgeInsets.all(10.0),
+                  // margin: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                    border: Border.all(
+                      color: const Color(Constant.mainColor),
+                      width: 3,
                     ),
-                    const SizedBox(width: 10),
-                    Expanded(
-                      child: Text(
-                        instruction, // リスト内の指示を表示
+                    borderRadius: BorderRadius.circular(10),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        '${index + 1}.',
                         style: const TextStyle(
-                          fontSize: 25,
+                          fontSize: 30,
+                          color: Colors.orange,
                           fontWeight: FontWeight.bold,
                         ),
                       ),
-                    ),
-                  ],
+                      const SizedBox(width: 10),
+                      Expanded(
+                        child: Text(
+                          instruction, // リスト内の指示を表示
+                          style: const TextStyle(
+                            fontSize: 20,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             }),
