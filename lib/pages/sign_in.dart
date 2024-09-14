@@ -213,6 +213,7 @@ class _SignUpState extends State<SignUp> {
                                           });
                                           print("新しいユーザードキュメントを作成しました");
                                         }
+                                        Constant.userid = user?.uid;
                                       } catch (e) {
                                   print("えらーだよ！");
                                   print(e);
