@@ -41,6 +41,25 @@ class _SignUpState extends State<SignUp> {
     Firebase.initializeApp();
   }
 
+  // 新規作成時Firestoreにユーザーデータを登録する関数
+  Future<void> _newUserCheckData(
+    User? user,
+    String? name,
+    String place,
+  ) async {
+    try {
+      await FirebaseFirestore.instance.collection('user').doc(user?.uid).set({
+        'name': name,
+        'place': place,
+        'check': List.generate(9, (_) => false),
+        'goods': List.generate(9, (_) => false),
+      });
+      print("ユーザーデータを登録したよ");
+    } catch (e) {
+      print("ユーザーデータの保存失敗！");
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
