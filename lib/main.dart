@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
+import 'package:home_escape/constant/constant.dart';
 import 'package:home_escape/pages/check_page.dart';
 
 import 'pages/account_pag.dart';
@@ -20,6 +21,10 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    //デバイスの縦横取得してるよー
+    Constant.deviceHeight = MediaQuery.of(context).size.height;
+    Constant.deviceWidth = MediaQuery.of(context).size.width;
+
     return MaterialApp(
       title: 'HomeEscape',
       theme: ThemeData(
@@ -54,9 +59,9 @@ class HomePage extends HookWidget {
 
     // 各タブに表示するページのリスト
     final List<Widget> _pages = <Widget>[
-      const acountPage(), //ここに追加する
-      const checkPage(),
-      const escapePage(),
+      // const AccountPage(), //ここに追加する
+      // const checkPage(),
+      const AccountPage(),
       
     ];
 
