@@ -7,11 +7,9 @@ import 'package:home_escape/main.dart';
 import './start.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
-import 'package:home_escape/constant/constant.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -119,6 +117,8 @@ class _SignUpState extends State<SignUp> {
                             TextFormField(
                               decoration: const InputDecoration(
                                 labelText: 'email',
+                                labelStyle: TextStyle(
+                                    color: Color(Constant.mainFontColor)),
                                 border: OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -143,9 +143,12 @@ class _SignUpState extends State<SignUp> {
                                 });
                               },
                             ),
+                            const SizedBox(height: 5.0),
                             TextFormField(
                               decoration: const InputDecoration(
                                 labelText: 'password',
+                                labelStyle: TextStyle(
+                                    color: Color(Constant.mainFontColor)),
                                 border: OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
