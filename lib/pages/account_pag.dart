@@ -9,6 +9,14 @@ class AccountPage extends StatefulWidget {
 }
 
 class _AccountPageState extends State<AccountPage> {
+  String isSelectedValue = '沖縄県';
+  List<String> choices = <String>[
+    '沖縄県', 
+    '三重県', 
+    '愛知県',
+    '北海道',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -91,8 +99,36 @@ class _AccountPageState extends State<AccountPage> {
               )
             ),
           ],
-        )
+        ),
+        pullDown(),
       ],
+    );
+  }
+
+  Widget pullDown(){
+    return IntrinsicWidth(
+      child: ConstrainedBox(
+        constraints: const BoxConstraints(
+          minWidth: 250,
+        ),
+        child: DropdownButtonFormField(
+          decoration: const InputDecoration(
+            border: OutlineInputBorder(),
+          ),
+          items: choices.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),
+          value: isSelectedValue,
+          onChanged: (String? value) {
+            setState(() {
+              isSelectedValue = value!;
+            });
+          },
+        ),
+      ),
     );
   }
 }
