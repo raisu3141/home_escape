@@ -162,9 +162,16 @@ class _SignUpState extends State<SignUp> {
                                               email: _email,
                                               password: _password))
                                       .user;
-                                  if (user != null)
-                                    print(
-                                        "ユーザ登録しました ${user.email} , ${user.uid}");
+                                  if (user != null){
+                                    // Firestoreにドキュメントが存在しない場合、新しいドキュメントを作成
+                                    await FirebaseFirestore.instance.collection('user').doc(user?.uid).set({
+                                      'name': "", // 初期値
+                                      'place': "", // 初期値
+                                      'check': List.generate(9, (_) => false), // 9個のfalseを持つ配列
+                                      'goods': List.generate(11, (_) => false), // 11個のfalseを持つ配列
+                                    });
+                                    print("ユーザ登録しました ${user.email} , ${user.uid}");
+                                  }
                                 } catch (e) {
                                   print(e);
                                 }
@@ -185,7 +192,28 @@ class _SignUpState extends State<SignUp> {
                                   if (user != null)
                                     print(
                                         "ログインしました　${user.email} , ${user.uid}");
-                                } catch (e) {
+
+                                        // Firestoreからユーザー情報を取得
+                                        DocumentSnapshot<Map<String, dynamic>> userDoc = await FirebaseFirestore
+                                            .instance
+                                            .collection('user') // ユーザー情報が保存されているコレクション名
+                                            .doc(user?.uid) // ユーザーIDを使用して該当するドキュメントを取得
+                                            .get();
+
+                                        if (userDoc.exists) {
+                                          // Firestoreにユーザーが登録されている場合
+                                          print("Firestoreに登録されているユーザー情報: ${userDoc.data()}");
+                                        } else {
+                                          // Firestoreにドキュメントが存在しない場合、新しいドキュメントを作成
+                                          await FirebaseFirestore.instance.collection('user').doc(user?.uid).set({
+                                            'name': "", // 初期値
+                                            'place': "", // 初期値
+                                            'check': List.generate(9, (_) => false), // 9個のfalseを持つ配列
+                                            'goods': List.generate(11, (_) => false), // 11個のfalseを持つ配列
+                                          });
+                                          print("新しいユーザードキュメントを作成しました");
+                                        }
+                                      } catch (e) {
                                   print("えらーだよ！");
                                   print(e);
                                 }
