@@ -7,6 +7,7 @@ import 'package:home_escape/pages/check_page.dart';
 import 'pages/account_pag.dart';
 import 'pages/escape_page.dart';
 import 'pages/check_page.dart';
+import 'pages/start.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -34,7 +35,7 @@ class MyApp extends StatelessWidget {
         // フォントの設定
         fontFamily: 'dotGothic16',
       ),
-      home: const HomePage(title: 'HomeEscape'),
+      home: const StartPage(),
     );
   }
 }
