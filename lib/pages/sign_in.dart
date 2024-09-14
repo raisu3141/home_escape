@@ -52,7 +52,7 @@ class _SignUpState extends State<SignUp> {
         'name': name,
         'place': place,
         'check': List.generate(9, (_) => false),
-        'goods': List.generate(9, (_) => false),
+        'goods': List.generate(11, (_) => false),
       });
       print("ユーザーデータを登録したよ");
     } catch (e) {
@@ -173,7 +173,6 @@ class _SignUpState extends State<SignUp> {
                                 });
                               },
                             ),
-
                             const SizedBox(height: 40.0),
                             Row(
                               mainAxisAlignment:
@@ -253,6 +252,7 @@ class _SignUpState extends State<SignUp> {
                                   },
                                 ),
                               ],
+
                             ),
                             const SizedBox(height: 16.0),
                           ],
