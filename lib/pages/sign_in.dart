@@ -7,11 +7,9 @@ import 'package:home_escape/main.dart';
 import './start.dart';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/services.dart';
-import 'package:home_escape/constant/constant.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({super.key});
@@ -100,6 +98,8 @@ class _SignUpState extends State<SignUp> {
                             TextFormField(
                               decoration: const InputDecoration(
                                 labelText: 'email',
+                                labelStyle: TextStyle(
+                                    color: Color(Constant.mainFontColor)),
                                 border: OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -124,9 +124,12 @@ class _SignUpState extends State<SignUp> {
                                 });
                               },
                             ),
+                            const SizedBox(height: 5.0),
                             TextFormField(
                               decoration: const InputDecoration(
                                 labelText: 'password',
+                                labelStyle: TextStyle(
+                                    color: Color(Constant.mainFontColor)),
                                 border: OutlineInputBorder(),
                                 focusedBorder: OutlineInputBorder(
                                   borderSide: BorderSide(
@@ -151,45 +154,83 @@ class _SignUpState extends State<SignUp> {
                                 });
                               },
                             ),
-                            // 3行目 ユーザ登録ボタン
-                            ElevatedButton(
-                              child: const Text('ユーザ登録'),
-                              onPressed: () async {
-                                try {
-                                  final User? user = (await FirebaseAuth
-                                          .instance
-                                          .createUserWithEmailAndPassword(
-                                              email: _email,
-                                              password: _password))
-                                      .user;
-                                  if (user != null)
-                                    print(
-                                        "ユーザ登録しました ${user.email} , ${user.uid}");
-                                } catch (e) {
-                                  print(e);
-                                }
-                              },
-                            ),
-                            // 4行目 ログインボタン
-                            ElevatedButton(
-                              child: const Text('ログイン'),
-                              onPressed: () async {
-                                try {
-                                  // メール/パスワードでログイン
-                                  final User? user = (await FirebaseAuth
-                                          .instance
-                                          .signInWithEmailAndPassword(
-                                              email: _email,
-                                              password: _password))
-                                      .user;
-                                  if (user != null)
-                                    print(
-                                        "ログインしました　${user.email} , ${user.uid}");
-                                } catch (e) {
-                                  print("えらーだよ！");
-                                  print(e);
-                                }
-                              },
+                            Row(
+                              mainAxisAlignment:
+                                  MainAxisAlignment.center, // ボタンを中央に配置
+                              children: [
+                                // 3行目 ユーザ登録ボタン
+                                ElevatedButton(
+                                  child: const Text('ユーザ登録'),
+                                  style: ElevatedButton.styleFrom(
+                                      fixedSize: Size(140, 40),
+                                      backgroundColor:
+                                          Color(Constant.accentColor),
+                                      foregroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(5))),
+                                  onPressed: () async {
+                                    try {
+                                      final User? user = (await FirebaseAuth
+                                              .instance
+                                              .createUserWithEmailAndPassword(
+                                                  email: _email,
+                                                  password: _password))
+                                          .user;
+                                      if (user != null)
+                                        print(
+                                            "ユーザ登録しました ${user.email} , ${user.uid}");
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const HomePage(
+                                                    title: 'HomePage')),
+                                      );
+                                    } catch (e) {
+                                      print(e);
+                                    }
+                                  },
+                                ),
+                                const SizedBox(width: 40),
+                                // 4行目 ログインボタン
+                                ElevatedButton(
+                                  child: const Text('ログイン'),
+                                  style: ElevatedButton.styleFrom(
+                                      fixedSize: Size(120, 40),
+                                      backgroundColor:
+                                          Color(Constant.mainColor),
+                                      foregroundColor: Colors.white,
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(5))),
+                                  onPressed: () async {
+                                    try {
+                                      // メール/パスワードでログイン
+                                      final User? user = (await FirebaseAuth
+                                              .instance
+                                              .signInWithEmailAndPassword(
+                                                  email: _email,
+                                                  password: _password))
+                                          .user;
+                                      if (user != null)
+                                        print(
+                                            "ログインしました　${user.email} , ${user.uid}");
+
+                                      Navigator.pushReplacement(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (context) =>
+                                                const HomePage(
+                                                    title: 'HomePage')),
+                                      );
+                                    } catch (e) {
+                                      print("えらーだよ！");
+                                      print(e);
+                                    }
+                                  },
+                                ),
+                              ],
                             ),
                             const SizedBox(height: 16.0),
                           ],
