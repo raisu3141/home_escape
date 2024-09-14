@@ -178,6 +178,7 @@ class _SignUpState extends State<SignUp> {
                             Row(
                               mainAxisAlignment:
                                   MainAxisAlignment.center, // ボタンを中央に配置
+                              //test
                               children: [
                                 // 3行目 ユーザ登録ボタン
                                 ElevatedButton(
