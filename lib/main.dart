@@ -2,8 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:home_escape/constant/constant.dart';
-import 'package:home_escape/pages/check_page.dart';
+import 'package:firebase_core/firebase_core.dart';
 
+import 'firebase_options.dart';
+import 'package:home_escape/pages/check_page.dart';
 import 'pages/account_pag.dart';
 import 'pages/escape_page.dart';
 import 'pages/check_page.dart';
@@ -11,6 +13,9 @@ import 'pages/start.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  ); // Firebaseを初期化
 
   const app = MyApp();
   const scope = ProviderScope(child: app);
