@@ -51,6 +51,7 @@ class _AccountPageState extends State<AccountPage> {
                 showEmail(),
                 SizedBox(height: Constant.deviceHeight * 0.03),
                 showLocation(),
+                const SizedBox(height: 60)
               ],
             ),
           ),
