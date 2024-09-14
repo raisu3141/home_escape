@@ -54,7 +54,7 @@ class _SignUpState extends State<SignUp> {
         'name': name,
         'place': place,
         'check': List.generate(9, (_) => false),
-        'goods': List.generate(9, (_) => false),
+        'goods': List.generate(11, (_) => false),
       });
       print("ユーザーデータを登録したよ");
     } catch (e) {
@@ -206,6 +206,12 @@ class _SignUpState extends State<SignUp> {
                                   if (user != null)
                                     print(
                                         "ログインしました　${user.email} , ${user.uid}");
+                                        Navigator.pushReplacement(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const HomePage(title: 'HomePage')),
+                                        );
                                 } catch (e) {
                                   print("えらーだよ！");
                                   print(e);
