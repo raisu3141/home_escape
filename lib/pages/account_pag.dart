@@ -1,17 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:home_escape/constant/constant.dart';
 
-class MyWidget extends StatefulWidget {
-  const MyWidget({super.key});
+class AccountPage extends StatefulWidget {
+  const AccountPage({super.key});
 
   @override
-  State<MyWidget> createState() => _MyWidgetState();
+  State<AccountPage> createState() => _AccountPageState();
 }
 
-class _MyWidgetState extends State<MyWidget> {
+class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
-    final double deviceHeight = MediaQuery.of(context).size.height; //端末の縦の大きさを取得
-
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(
@@ -25,7 +24,7 @@ class _MyWidgetState extends State<MyWidget> {
         body: Center(
           child: Column(
             children: [
-              SizedBox(height: deviceHeight * 0.06),
+              SizedBox(height: Constant.deviceHeight * 0.06),
               const Icon(
                   IconData(0xee35, fontFamily: 'MaterialIcons'),
                   color: Color(0xFFF38D49),
@@ -39,6 +38,7 @@ class _MyWidgetState extends State<MyWidget> {
                 ),
               ),
 
+              SizedBox(height: Constant.deviceHeight * 0.1),
               showEmail(),
             ],
           ),
@@ -48,12 +48,16 @@ class _MyWidgetState extends State<MyWidget> {
   }
 
   Widget showEmail(){
-    return const Column(
+    return Column(
       children: [
         Row(
           children: [
-            Text(
-              'mail'
+            SizedBox(width: Constant.deviceWidth * 0.13),
+            const Text(
+              'mail',
+              style: TextStyle(
+                fontSize: 20,
+              )
             ),
           ],
         ),
