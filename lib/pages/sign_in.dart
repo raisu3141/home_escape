@@ -145,8 +145,6 @@ class _SignUpState extends State<SignUp> {
                             ),
                             const SizedBox(height: 5.0),
                             TextFormField(
-                              style:
-                                  TextStyle(color: Color(Constant.mainColor)),
                               decoration: const InputDecoration(
                                 labelText: 'password',
                                 labelStyle: TextStyle(
@@ -175,6 +173,8 @@ class _SignUpState extends State<SignUp> {
                                 });
                               },
                             ),
+
+                            const SizedBox(height: 40.0),
                             Row(
                               mainAxisAlignment:
                                   MainAxisAlignment.center, // ボタンを中央に配置
@@ -183,7 +183,7 @@ class _SignUpState extends State<SignUp> {
                                 ElevatedButton(
                                   child: const Text('ユーザ登録'),
                                   style: ElevatedButton.styleFrom(
-                                      fixedSize: Size(140, 40),
+                                      fixedSize: Size(160, 60),
                                       backgroundColor:
                                           Color(Constant.accentColor),
                                       foregroundColor: Colors.white,
@@ -213,12 +213,12 @@ class _SignUpState extends State<SignUp> {
                                     }
                                   },
                                 ),
-                                const SizedBox(width: 40),
+                                const SizedBox(width: 50),
                                 // 4行目 ログインボタン
                                 ElevatedButton(
                                   child: const Text('ログイン'),
                                   style: ElevatedButton.styleFrom(
-                                      fixedSize: Size(120, 40),
+                                      fixedSize: Size(160, 60),
                                       backgroundColor:
                                           Color(Constant.mainColor),
                                       foregroundColor: Colors.white,
