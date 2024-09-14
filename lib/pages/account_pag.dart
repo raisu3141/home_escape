@@ -29,28 +29,30 @@ class _AccountPageState extends State<AccountPage> {
         ),
         backgroundColor: Color(0xFFF38D49),
         ),
-        body: Center(
-          child: Column(
-            children: [
-              SizedBox(height: Constant.deviceHeight * 0.06),
-              const Icon(
-                  IconData(0xee35, fontFamily: 'MaterialIcons'),
-                  color: Color(0xFFF38D49),
-                  size: 150,
+        body: SingleChildScrollView(
+          child: Center(
+            child: Column(
+              children: [
+                SizedBox(height: Constant.deviceHeight * 0.06),
+                const Icon(
+                    IconData(0xee35, fontFamily: 'MaterialIcons'),
+                    color: Color(0xFFF38D49),
+                    size: 150,
+                  ),
+                const Padding(
+                  padding: EdgeInsets.all(8.0),
+                  child:  Text(
+                    'よしにき',
+                    style: TextStyle(fontSize: 30)
+                  ),
                 ),
-              const Padding(
-                padding: EdgeInsets.all(8.0),
-                child:  Text(
-                  'よしにき',
-                  style: TextStyle(fontSize: 30)
-                ),
-              ),
-
-              SizedBox(height: Constant.deviceHeight * 0.17),
-              showEmail(),
-              SizedBox(height: Constant.deviceHeight * 0.03),
-              showLocation(),
-            ],
+          
+                SizedBox(height: Constant.deviceHeight * 0.17),
+                showEmail(),
+                SizedBox(height: Constant.deviceHeight * 0.03),
+                showLocation(),
+              ],
+            ),
           ),
         ),
       ),
