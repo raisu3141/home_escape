@@ -62,6 +62,9 @@ class _SignUpState extends State<SignUp> {
 
   @override
   Widget build(BuildContext context) {
+    final double deviceHeight =
+        MediaQuery.of(context).size.height; //端末の縦の大きさを取得
+    final double deviceWidth = MediaQuery.of(context).size.width; //端末の横の大きさを取得
     return Scaffold(
       body: Container(
         color: Color(Constant.backGroundColor),
@@ -183,7 +186,8 @@ class _SignUpState extends State<SignUp> {
                                 ElevatedButton(
                                   child: const Text('ユーザ登録'),
                                   style: ElevatedButton.styleFrom(
-                                      fixedSize: Size(160, 60),
+                                      fixedSize: Size(deviceWidth * 0.3,
+                                          deviceHeight * 0.1),
                                       backgroundColor:
                                           Color(Constant.accentColor),
                                       foregroundColor: Colors.white,
@@ -213,12 +217,13 @@ class _SignUpState extends State<SignUp> {
                                     }
                                   },
                                 ),
-                                const SizedBox(width: 50),
+                                SizedBox(width: deviceWidth * 0.1),
                                 // 4行目 ログインボタン
                                 ElevatedButton(
                                   child: const Text('ログイン'),
                                   style: ElevatedButton.styleFrom(
-                                      fixedSize: Size(160, 60),
+                                      fixedSize: Size(deviceWidth * 0.3,
+                                          deviceHeight * 0.1),
                                       backgroundColor:
                                           Color(Constant.mainColor),
                                       foregroundColor: Colors.white,
@@ -252,7 +257,6 @@ class _SignUpState extends State<SignUp> {
                                   },
                                 ),
                               ],
-
                             ),
                             const SizedBox(height: 16.0),
                           ],
