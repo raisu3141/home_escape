@@ -1,7 +1,9 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:home_escape/constant/constant.dart';
+import 'package:home_escape/notice/notice.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -19,6 +21,21 @@ class _AccountPageState extends State<AccountPage> {
     '愛知県',
     '北海道',
   ];
+  late FirebaseMessaging messaging;
+
+  @override
+  void initState() {
+    init();
+    super.initState();
+  }
+
+  init() async{
+    String deviceToken = await Notice().getDeviceToken();
+    print('############PRINT DEVICE TOKEN ##############');
+    print(deviceToken);
+    print('#############################################');
+  }
+
 
   @override
   void initState() {
