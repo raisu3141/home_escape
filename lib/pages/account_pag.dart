@@ -23,11 +23,6 @@ class _AccountPageState extends State<AccountPage> {
   ];
   late FirebaseMessaging messaging;
 
-  @override
-  void initState() {
-    init();
-    super.initState();
-  }
 
   init() async{
     String deviceToken = await Notice().getDeviceToken();
