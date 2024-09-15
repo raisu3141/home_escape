@@ -18,6 +18,7 @@ class _AccountPageState extends State<AccountPage> {
     '愛知県',
     '北海道',
   ];
+  late FirebaseMessaging messaging;
 
   @override
   void initState() {
