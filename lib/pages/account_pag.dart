@@ -80,6 +80,7 @@ class _AccountPageState extends State<AccountPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: const Color(Constant.backGroundColor),
       appBar: AppBar(
         centerTitle: true,
         title: const Text(
