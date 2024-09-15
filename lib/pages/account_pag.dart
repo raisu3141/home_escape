@@ -23,19 +23,12 @@ class _AccountPageState extends State<AccountPage> {
   ];
   late FirebaseMessaging messaging;
 
-  @override
-  void initState() {
-    init();
-    super.initState();
-  }
-
-  init() async{
+  init() async {
     String deviceToken = await Notice().getDeviceToken();
     print('############PRINT DEVICE TOKEN ##############');
     print(deviceToken);
     print('#############################################');
   }
-
 
   @override
   void initState() {
@@ -57,7 +50,8 @@ class _AccountPageState extends State<AccountPage> {
         if (userDoc.exists) {
           setState(() {
             email = user.email ?? 'No email found'; // Get user's email
-            isSelectedValue = userDoc['place'] ?? isSelectedValue; // Get location
+            isSelectedValue =
+                userDoc['place'] ?? isSelectedValue; // Get location
           });
         }
       }
