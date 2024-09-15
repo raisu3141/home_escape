@@ -1,4 +1,6 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:home_escape/constant/constant.dart';
@@ -11,12 +13,70 @@ import 'pages/escape_page.dart';
 import 'pages/check_page.dart';
 import 'pages/start.dart';
 
+Future<void> _firebaseMessagingBackgroundHandler(RemoteMessage message) async {
+
+  print("Handling a background message: ${message.messageId}");
+}
+
+
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   ); // Firebaseを初期化
 
+
+  final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
+    FlutterLocalNotificationsPlugin();
+
+  const AndroidNotificationChannel channel = AndroidNotificationChannel(
+      'channel_id',
+      'high importance channel',
+      importance: Importance.max,
+    );
+
+
+  await flutterLocalNotificationsPlugin
+          .resolvePlatformSpecificImplementation<
+              AndroidFlutterLocalNotificationsPlugin>()
+          ?.createNotificationChannel(channel);
+
+  // 通知アイコンの設定が必要なため事前に設定しておく
+  var initializationSettingsAndroid =
+          const AndroidInitializationSettings('@mipmap/ic_launcher');
+      var initializationSettings =
+          InitializationSettings(android: initializationSettingsAndroid);
+      await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+
+  // flutter_local_notificationsでバナー表示
+  FirebaseMessaging.onMessage.listen((message){
+    RemoteNotification? notification = message.notification;
+    AndroidNotification? android = message.notification?.android;
+
+    if (notification != null && android != null) {
+      flutterLocalNotificationsPlugin.show(
+        notification.hashCode,
+        notification.title,
+        notification.body,
+        NotificationDetails(
+          android: AndroidNotificationDetails(
+            channel.id,
+            channel.name,
+          ),
+        ),
+      );
+    }
+  });
+
+
+
+
+
+
+
+
+
+  FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
   const app = MyApp();
   const scope = ProviderScope(child: app);
   runApp(scope);
