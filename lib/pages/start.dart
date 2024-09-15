@@ -23,7 +23,7 @@ class StartPage extends ConsumerWidget {
           // 画面をタップしたときにログインページに遷移
           Navigator.pushReplacement(
             context,
-            MaterialPageRoute(builder: (context) => const SignUp()),
+            MaterialPageRoute(builder: (context) => IsLogined()),
           );
         },
         child: Column(

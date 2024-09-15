@@ -269,3 +269,24 @@ class _SignUpState extends State<SignUp> {
     );
   }
 }
+
+class IsLogined extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return StreamBuilder<User?>(
+      //stream: FirebaseAuth.instance.authStateChanges(),
+      stream: FirebaseAuth.instance.userChanges(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const SizedBox();
+        }
+        if (snapshot.hasData) {
+          // Userデータがあるので、ユーザー情報表示画面へ
+          return HomePage(title: 'HomePage');
+        }
+        // Userデータがないので、サインイン画面へ
+        return const SignUp();
+      },
+    );
+  }
+}

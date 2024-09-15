@@ -4,6 +4,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:home_escape/constant/constant.dart';
 import 'package:home_escape/notice/notice.dart';
+import 'package:home_escape/pages/sign_in.dart';
+import 'package:home_escape/pages/start.dart';
 
 class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
@@ -91,6 +93,23 @@ class _AccountPageState extends State<AccountPage> {
         child: Center(
           child: Column(
             children: [
+              Row(
+                children: [
+                  Spacer(),
+                  ElevatedButton(
+                  onPressed: () async {
+                    // ログアウト処理
+                    await FirebaseAuth.instance.signOut();
+                    // ログアウト後にSignUp画面に遷移
+                    Navigator.pushReplacement(
+                      context,
+                      MaterialPageRoute(builder: (context) => StartPage()),
+                    );
+                  },
+                  child: Text('Log Out'),
+                              ),
+                ],
+              ),
               SizedBox(height: Constant.deviceHeight * 0.06),
               const Icon(
                 IconData(0xee35, fontFamily: 'MaterialIcons'),
