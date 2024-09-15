@@ -92,21 +92,33 @@ class _AccountPageState extends State<AccountPage> {
         child: Center(
           child: Column(
             children: [
+              SizedBox(height: 10),
               Row(
                 children: [
                   Spacer(),
                   ElevatedButton(
-                  onPressed: () async {
-                    // ログアウト処理
-                    await FirebaseAuth.instance.signOut();
-                    // ログアウト後にSignUp画面に遷移
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => StartPage()),
-                    );
-                  },
-                  child: Text('Log Out'),
-                              ),
+                    onPressed: () async {
+                      // ログアウト処理
+                      await FirebaseAuth.instance.signOut();
+                      // ログアウト後にSignUp画面に遷移
+                      Navigator.pushReplacement(
+                        context,
+                        MaterialPageRoute(builder: (context) => StartPage()),
+                      );
+                    },
+                    child: Text('Log Out'),
+                    style: ElevatedButton.styleFrom(
+                        fixedSize: Size(120, 30),
+                        backgroundColor: Colors.white,
+                        foregroundColor: Color(Constant.accentColor),
+                        side: BorderSide(
+                          color: Color(Constant.accentColor), // ボーダーの色
+                          width: 1.0, // ボーダーの太さ
+                        ),
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(5))),
+                  ),
+                  SizedBox(width: 10),
                 ],
               ),
               SizedBox(height: Constant.deviceHeight * 0.06),
