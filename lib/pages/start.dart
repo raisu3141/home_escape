@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_hooks/flutter_hooks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:home_escape/constant/constant.dart';
@@ -17,88 +18,38 @@ class StartPage extends ConsumerWidget {
 
     return Scaffold(
       backgroundColor: Color(Constant.mainColor),
-      body: Column(
-        children: [
-          SizedBox(height: deviceHeight * 0.1),
-          Padding(
-            padding: const EdgeInsets.fromLTRB(16, 70, 16, 8),
-            // ロゴ画像
-            child: Center(
-              child: Container(
-                child: Image.asset('assets/images/icon.png'),
-                width: deviceHeight * 0.4,
+      body: GestureDetector(
+        onTap: () {
+          // 画面をタップしたときにログインページに遷移
+          Navigator.pushReplacement(
+            context,
+            MaterialPageRoute(builder: (context) => const SignUp()),
+          );
+        },
+        child: Column(
+          children: [
+            Expanded(
+              child: Center(
+                // ロゴ画像を中央に配置
+                child: Container(
+                  width: deviceHeight * 0.4,
+                  child: Image.asset('assets/images/icon.png'),
+                ),
               ),
             ),
-          ),
-          SizedBox(height: deviceHeight * 0.03),
-          Padding(
-              // ログインスタートボタン
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: Center(
-                child: ElevatedButton(
-                  onPressed: () {
-                    // toDo: ボタンを押すとログインページに遷移
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(builder: (context) => const SignUp()),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: Size(deviceWidth * 0.75, deviceHeight * 0.09),
-                    backgroundColor: Color(Constant.mainColor),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(
-                        color: Colors.white, // 枠線の色を白に設定
-                        width: 2, // 枠線の太さを設定（例: 2）
-                      ),
-                    ),
-                  ),
-                  child: Text(
-                    'ログイン',
-                    style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
-              )),
-          SizedBox(height: deviceHeight * 0.01),
-          Padding(
-              // ゲストスタートボタン
-              padding: const EdgeInsets.fromLTRB(16, 8, 16, 8),
-              child: Center(
-                child: ElevatedButton(
-                  onPressed: () async {
-                    // ボタンを押すとホーム画面に遷移
-                    Navigator.pushReplacement(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                              const HomePage(title: 'HomePage')),
-                    );
-                  },
-                  style: ElevatedButton.styleFrom(
-                    fixedSize: Size(deviceWidth * 0.75, deviceHeight * 0.09),
-                    backgroundColor: Colors.white,
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      side: BorderSide(
-                        color: Color(Constant.accentColor), // 枠線の色を白に設定
-                        width: 2, // 枠線の太さを設定（例: 2）
-                      ),
-                    ),
-                  ),
-                  child: Text(
-                    'ゲストとしてはじめる',
-                    style: TextStyle(
-                      color: Color(Constant.accentColor),
-                      fontSize: 20,
-                    ),
-                  ),
-                ),
-              )),
-        ],
+            const Text(
+              '- 画面をタップしてスタート -',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  fontSize: 22,
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: deviceHeight * 0.1,
+            ),
+          ],
+        ),
       ),
     );
   }
